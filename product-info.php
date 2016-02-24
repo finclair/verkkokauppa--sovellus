@@ -11,20 +11,17 @@
 
 		<div class="wrap">
 			<?php require_once 'plugins/header.php'; ?>
-			
 			<?php require_once 'plugins/db-connection.php'; ?>
 			
-			<?php 
-			
-			$rowIndex = 0;
+			<?php
 			$name = $_GET['name'];
 			
-			$sql = $dbh->prepare("SELECT info FROM product WHERE name='$name' ");
+			$sql = $dbh->prepare("SELECT info FROM product WHERE :name = name");
+			$sql->bindParam(':name', $name);
 			$ok = $sql->execute();
 
 			if(!$ok) { print_r ($sql->errorInfo() ) ;} 
-			?>
-			<?php
+
 			$i = 0;
 			while($row = $sql->fetch(PDO::FETCH_ASSOC)) { //fetch on funktio joka tekee tietokannasta assosatiivisen taulukon, jota luetaan rivi kerrallaan
 				
