@@ -4,17 +4,13 @@
 	
 	<head>
 		<title>Ostoskori</title>
-		<meta charset="UTF-8"/>
-		<link rel="stylesheet" href="CSS/styles.css" type="text/css"/>
-		<meta http-equiv="refresh" content="1200; url=https://users.metropolia.fi/~klaush/VerkkosovellustenOhjelmointi/Projekti/shopping-cart.php"> 
+		<?php require_once 'plugins/head.php' ?>
 		
 	</head>
 	<body>
 		<div class= "wrap">
-		
 			<?php
-			
-			
+
 			require_once 'plugins/shopping-cart--header.php';
 			?>
 			<div class = "cart">
@@ -93,7 +89,7 @@
 						/*-- Muuttuja tallennetaan taulukkoon, jonka alkioihin kerääntyy näitä merkkijonoja niin kauan kuin silmukassa ollaan --*/
 						$order_array[] = $db_print; 
 						
-						//$message = implode("\r\n", $order_array);
+						$message = implode("\r\n", $order_array);
 						
 						$i++;
 					}
@@ -119,7 +115,7 @@
 					<p><label for="lastname">Sukunimi: </label><input type="text" id="lastname" name="lastname" value="<?php if (isset($_POST['lastname']) ) { echo $_POST['lastname']; } ?>"   size="30"></p>
 					<p><label for="address">Lähiosoite: </label><input type="text" id="address" name="address" value="<?php if (isset($_POST['address']) ) { echo $_POST['address']; } ?>"  size="30"></p>
 					<p><label for="email">Sähköposti: </label><input type="text" id="email" name="email"  size="30"></p>
-
+					<p><input type="hidden" id="message" value="<?php $message ?>"</p>
 					<div id="order-button">
 						<input type="submit" name="subscribe" value="Tilaa tuotteet!">
 					</div>

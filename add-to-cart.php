@@ -2,10 +2,7 @@
 <html>
 	<head>
 		<title>uGamer Store</title>
-		<meta charset="UTF-8"/>
-		<link rel="stylesheet" href="CSS/styles.css" type="text/css"/>
-	    <meta http-equiv="refresh" content="1200; url=https://users.metropolia.fi/~klaush/VerkkosovellustenOhjelmointi/Projekti/add-to-cart.php"> 
-		
+		<?php require_once 'plugins/head.php' ?>
 	</head>
 
 	<body>
