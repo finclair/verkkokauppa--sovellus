@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>uGamer Store</title>
-		<?php require_once 'plugins/head.php' ?>
-	</head>
+	<?php $pageTitle = 'uGamer Store Homepage'; ?>
+	<?php require_once 'plugins/head.php'; ?>
 	<body>
 		<div class="wrap">
 		

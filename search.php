@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>uGamer Store</title>
-		<?php require_once 'plugins/head.php' ?>
-	</head>
+	<?php require_once 'plugins/head.php' ?>
 	<body>
 		<div class="wrap">
 			

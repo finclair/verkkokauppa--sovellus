@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <?php session_start(); ?>
 <html>
-	
-	<head>
-		<title>Ostoskori</title>
-		<?php require_once 'plugins/head.php' ?>
-	</head>
+	<?php $pageTitle = 'Shopping Cart'; ?>
+	<?php require_once 'plugins/head.php'; ?>
 	<body>
 		<div class= "wrap">
-			<?php
+			<div id="header" class="group">
+				<h1><a href="index.php">uGamer Store</a></h1>
 
-			require_once 'plugins/shopping-cart--header.php';
-			?>
+				<form action="search.php" method="POST" >
+					<input type="text" name="name-input">
+					<select name="price-input">
+						<option value="">Hintahaarukka (€)</option>
+						<option value="10"> 0-10 </option>
+						<option value="20"> 0-19  </option>
+						<option value="30"> 0-29 </option>
+						<option value="40"> 0-39 </option>
+						<option value="50"> 0-49 </option>
+						<option value="60"> 0-59 </option>
+					</select>
+					<input type="submit"  name="submit" value="Hae">
+				</form>
+
+			</div>
 			<div class = "cart">
 				<?php
 				$total_sum = 0;

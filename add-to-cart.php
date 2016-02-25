@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>uGamer Store</title>
-		<?php require_once 'plugins/head.php' ?>
-	</head>
-
+	<?php require_once 'plugins/head.php'; ?>
 	<body>
 		<?php require_once 'plugins/header.php'; ?>
 		<?php require_once 'plugins/nav.php'; ?>
@@ -12,10 +8,6 @@
 			<div class="add-to-cart">
 				<div class="add-to-cart--info">
 					<?php
-					
-					//echo 'DEBUG Asetettu indeksi ' . $_POST['index'] . '<br>';
-					//echo 'DEBUG Asetettu lukumäärä ' . $_POST['quantity'] . '<br>';
-					
 					
 					//tarkistetaan ettei syöte ole 0
 					if($_POST['quantity'] == 0 || $_POST['quantity'] >= 10) {
