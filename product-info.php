@@ -5,7 +5,6 @@
 		<?php require_once 'plugins/head.php' ?>
 		</head>
 	<body>
-
 		<div class="wrap">
 			<?php require_once 'plugins/header.php'; ?>
 			<?php require_once 'plugins/db-connection.php'; ?>
@@ -20,14 +19,14 @@
 			if(!$ok) { print_r ($sql->errorInfo() ) ;} 
 
 			$i = 0;
-			while($row = $sql->fetch(PDO::FETCH_ASSOC)) { //fetch on funktio joka tekee tietokannasta assosatiivisen taulukon, jota luetaan rivi kerrallaan
+			while($product = $sql->fetch(PDO::FETCH_ASSOC)) { //fetch on funktio joka tekee tietokannasta assosatiivisen taulukon, jota luetaan rivi kerrallaan
 				
 				if($i == 0) {
 					?>
 					<article>
 						<div class="article-content">
-							<h1><?php echo $name ?></h1>
-							<p><?php echo $row['info']; ?><p>
+							<h1><?php echo $name; ?></h1>
+							<p><?php echo $product['info']; ?><p>
 						</div>
 					</article>
 					<?php

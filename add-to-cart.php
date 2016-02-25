@@ -6,7 +6,6 @@
 	</head>
 
 	<body>
-		<?php $rowIndex = 0 ?>
 		<?php require_once 'plugins/header.php'; ?>
 		<?php require_once 'plugins/nav.php'; ?>
 		<div class="wrap">

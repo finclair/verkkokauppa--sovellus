@@ -37,50 +37,25 @@
 				?>
 					<!-- Niin kauan kuin on tietueita tarkastellaan tietokannan taulua-->
 					<?php
-					while($row = $sql->fetch(PDO::FETCH_ASSOC) ) { 
+					while($product = $sql->fetch(PDO::FETCH_ASSOC) ) { 
 						
 						
 						//pienennetään kirjaimet niin käsiteltävästä rivistä kuin myös hakusyötteestä
 						//täten hakua eheytetään niin että ei ole väliä haetaanko tuote isoin vai pienin kirjaimin
 						
-						$row['name-temp'] = strtolower($row['name']);
+						$product['name-temp'] = strtolower($product['name']);
 						$_POST['name-input-temp'] = strtolower($_POST['name-input']);
 						
 						//Verrataan syötettä ja käsiteltävää riviä toisiinsa
-						$pos = strpos($row['name-temp'], $_POST['name-input-temp']);
+						$pos = strpos($product['name-temp'], $_POST['name-input-temp']);
 						
 						//jos strpos EI palauta arvoa false tulostetaan käsittelyssä oleva tuote -->
-						if($pos !== false && $_POST['price-input'] > $row['price']) { //strlower
+						if($pos !== false && $_POST['price-input'] > $product['price']) { //strlower
 
 							$found++;
-							?>
-							<div class = "product-content">
-						
-							<?php
-							//jos kuva löytyy tiedostosta
-							if (file_exists('img/' . $row['id'] . '.jpg')) {
-							?>
-								<img class ="product-image" src="img/<?php echo $row['id'] . ".jpg"?>" alt="tuotekuva">
-							<?php	
-							}
-							//jos ei löydy, niin tulostetaan 'placeholder' kuva
-							else {
-								?>
-								<img class ="product-image" src="img/default.jpg" alt="tuotekuva">
-								<?php
-							}
-							?>
-								<div class="product-container">
-									<h2 class="product-title"><a href = "product-info.php?name=<?php echo urlencode($row['name']); ?> "><?php echo $row['name']; ?></a></h2>
-									<h3 class="product-category"><?php echo $row['category']; ?></h3>
-									<h4 class="product-price"><?php echo $row['price'] . ' €'; ?></h4>
-									<h4 class="product-saldo"><?php echo 'Varastosaldo: ' . $row['saldo']  ; ?></h4>
-									
-									<?php include 'plugins/add-form.php' ?>
-								</div> 
-							</div> 
-						
-						<?php
+
+							require 'templates/product-preview.php';
+
 						}
 					}
 					$dbh = null; //lopetetaan tietokanta isutunto kun ollaan haettu kaikki halutut tietueet.
@@ -104,43 +79,16 @@
 					if(!$ok) { print_r ($sql->errorInfo() ) ;} 
 					
 				
-					while($row = $sql->fetch(PDO::FETCH_ASSOC) ) { 
+					while($product = $sql->fetch(PDO::FETCH_ASSOC) ) { 
 						
 						
 						/*	Jos POST arvolla siirretyn muuttujan $_POST[price-input] numereeninen arvo on 
 							pienenpi kuin käsiteltävän rivin 'price' arvo tulostetaan rivillä oleva tuote */
-						if($_POST['price-input'] > $row['price']) {
+						if($_POST['price-input'] > $product['price']) {
 						
 							$found++;
-							?>
-							<div class = "product-content">
-						
-							<?php
-							//jos kuva löytyy tiedostosta
-							if (file_exists('img/' . $row['id'] . '.jpg')) {
-							?>
-								<img class ="product-image" src="img/<?php echo $row['id'] . ".jpg"?>" alt="tuotekuva">
-							<?php	
-							}
-							//jos ei löydy, niin tulostetaan 'placeholder' kuva
-							else {
-								?>
-								<img class ="product-image" src="img/default.jpg" alt="tuotekuva">
-								<?php
-							}
-							?>
-								<div class="product-container">
-									<h2 class="product-title"><a href = "product-info.php?name=<?php echo urlencode($row['name']); ?> "><?php echo $row['name']; ?></a></h2>
-									<h3 class="product-category"><?php echo $row['category']; ?></h3>
-									<h4 class="product-price"><?php echo $row['price'] . ' €'; ?></h4>
-									<h4 class="product-saldo"><?php echo 'Varastosaldo: ' . $row['saldo']  ; ?></h4>
-									
-									<?php include 'plugins/add-form.php' ?>
-								</div> 
-							</div> 
-						
-						<?php
-						
+
+							require 'templates/product-preview.php';
 						}
 					}
 					//$dbh = null; //lopetetaan tietokanta isutunto kun ollaan haettu kaikki halutut tietueet.
@@ -165,49 +113,21 @@
 				?>
 					<!-- Niin kauan kuin on tietueita tarkastellaan tietokannan taulua-->
 					<?php
-					while($row = $sql->fetch(PDO::FETCH_ASSOC) ) { 
+					while($product = $sql->fetch(PDO::FETCH_ASSOC) ) { 
 						
 						
-						$row['name-temp'] = strtolower($row['name']);
+						$product['name-temp'] = strtolower($product['name']);
 						$_POST['name-input-temp'] = strtolower($_POST['name-input']);
 						
 						//Verrataan annettua POST arvoa käsiteltävän rivin 'name' sarakkeeseen strpos funktiolla
-						$pos = strpos($row['name-temp'], $_POST['name-input-temp']);
+						$pos = strpos($product['name-temp'], $_POST['name-input-temp']);
 						
 						
 						//jos strpos EI palauta arvoa false tulostetaan käsittelyssä oleva tuote -->
 						if($pos !== false) {
 
-						
 							$found++;
-							?>
-							<div class = "product-content">
-						
-							<?php
-							//jos kuva löytyy tiedostosta
-							if (file_exists('img/' . $row['id'] . '.jpg')) {
-							?>
-								<img class ="product-image" src="img/<?php echo $row['id'] . ".jpg"?>" alt="tuotekuva">
-							<?php	
-							}
-							//jos ei löydy, niin tulostetaan 'placeholder' kuva
-							else {
-								?>
-								<img class ="product-image" src="img/default.jpg" alt="tuotekuva">
-								<?php
-							}
-							?>
-								<div class="product-container">
-									<h2 class="product-title"><a href = "product-info.php?name=<?php echo urlencode($row['name']); ?>"><?php echo $row['name']; ?></a></h2>
-									<h3 class="product-category"><?php echo $row['category']; ?></h3>
-									<h4 class="product-price"><?php echo $row['price'] . ' €'; ?></h4>
-									<h4 class="product-saldo"><?php echo 'Varastosaldo: ' . $row['saldo']  ; ?></h4>
-									
-									<?php include 'plugins/add-form.php' ?>
-								</div> 
-							</div> 
-						
-						<?php
+							require 'templates/product-preview.php';
 						}
 					}
 					$dbh = null; //lopetetaan tietokanta isutunto kun ollaan haettu kaikki halutut tietueet.
