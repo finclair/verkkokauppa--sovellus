@@ -8,7 +8,6 @@
 			<div class="add-to-cart">
 				<div class="add-to-cart--info">
 					<?php
-					
 					//tarkistetaan ettei syöte ole 0
 					if($_POST['quantity'] == 0 || $_POST['quantity'] >= 10) {
 						echo 'Virheellinen syöte. Voit tilata kerrallaan vain yhdestä yhdeksään tuotetta. <br>';
