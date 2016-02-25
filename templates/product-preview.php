@@ -6,7 +6,9 @@
         <img class ="product-image" src="img/default.jpg" alt="tuotekuva">
     <?php endif; ?>
     <div class="product-container">
-        <h2 class="product-title"><a href = "product-info.php?name=<?php echo urlencode($product['name']); ?> "><?php echo $product['name']; ?></a></h2>
+        <h2 class="product-title">
+            <a href="product-info.php?id=<?php echo $product['id']; ?> "><?php echo $product['name']; ?></a>
+        </h2>
         <h3 class="product-category"><?php echo $product['category']; ?></h3>
         <h4 class="product-price"><?php echo $product['price'] . ' €' ; ?></h4>
         <h4 class="product-price"><?php echo 'Varastosaldo: ' . $product['saldo']  ; ?></h4>
