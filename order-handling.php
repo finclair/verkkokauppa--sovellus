@@ -57,9 +57,10 @@ if(isset($_POST['subscribe']) ) {
                     $customer_email = $_POST['email'];
                     $store_mail = "uGamer@store.com";
 
-                    //TODO Create message variable use properly
-                    //$message = $_POST['firstname'] . ' ' . $_POST['lastname'] . "\r\n" . $_POST['address']  . "\r\n\r\n" . $_POST['message'];
-                    $message = 'assddsaad';
+                    //TODO Create message variable use properly  --> DONE
+                    //TODO Price Tag printed in the messsage
+                    $message = $_POST['firstname'] . ' ' . $_POST['lastname'] . "\r\n" . $_POST['address']  . "\r\n\r\n" . $_SESSION['message'];
+                    //$message = 'assddsaad';
 
                     $customer_message = "Olemme vastaanottaneet tilauksesi. Ystävällisin terveisin uGamer Store.";
 
@@ -85,7 +86,6 @@ if(isset($_POST['subscribe']) ) {
                         $ok = $sql->execute();
 
                         if(!$ok) { print_r ($sql->errorInfo() ); }
-
 
                         while($row = $sql->fetch(PDO::FETCH_ASSOC) ) {
 

@@ -15,15 +15,13 @@
 			if (count($_GET) == 0) {
 
 				?>
-				
 				<div class="lead-paragraph">
 					<h1>Tervetuloa verkkokauppaamme!</h1>
 					
 					<p>Meiltä löytyy videopelejä olit sitten räiskinnästä kiinnostonut konsolipelaaja tai sitten enemmän strategiasta pitävä kotimikron ystävä!</p>
 					<p>Takaamme, että sinäkin löydät jotakin massivisesta valikoimastamme! Tässä uutuuksiamme!</p>
 				</div>
-				
-					<?php 
+				<?php
 			/*--- Suoritetaan tietokantaan liittyvä haku, jolla saadaan 3 kannan viimeksi lisättyä tuotetta ---*/
 			/*-- Näin saadaan etusivulle dynaamisutta jos kantaa päivitetään uusilla tuotteilla --*/
 
@@ -38,7 +36,6 @@
 				<div class="clearfix"></div>
 			
 			</div> <!-- end of product- -list -->
-			
 			<?php
 			}
 			else {
@@ -59,7 +56,6 @@
 			<?php	
 			}
 		    require_once 'plugins/footer.php'; ?>
-			
 		</div> <!-- closing wrap -->
 	</body>
 </html>

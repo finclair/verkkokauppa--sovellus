@@ -4,7 +4,7 @@
 <body>
 	<?php include 'plugins/unset-session.php'; ?>
 	
-	<h1>"Kiitos tilauksestasi ja hyvää joulua!"</h1>
+	<h1>"Olemme vastaanottaneet tilauksenne ja lähettäneet siitä kuitin antamaanne sähköpostiosoitteeseen."</h1>
 	<a href = "index.php">Palaa etusivulle</a>
 </body>
 </html>

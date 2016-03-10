@@ -13,7 +13,7 @@
 					<select name="price-input">
 						<option value="">Hintahaarukka (€)</option>
 						<option value="10"> 0-10 </option>
-						<option value="20"> 0-19  </option>
+						<option value="20"> 0-19 </option>
 						<option value="30"> 0-29 </option>
 						<option value="40"> 0-39 </option>
 						<option value="50"> 0-49 </option>
@@ -91,14 +91,15 @@
 							number_format((float)$total_sum, 2, '.', '');
 
 
-							/*-- luodaan muuttuja, joka toimii tulostuksna kunkin ostetun tuotteen nimestä, kategoriasta ja määrästä. Tätä muuttujaa käytetään sähköpostin luomisessa, mikäli asiakas tilaa totteet--*/
+							/*-- luodaan muuttuja, joka toimii tulostuksna kunkin ostetun tuotteen nimestä, kategoriasta
+							 ja määrästä. Tätä muuttujaa käytetään sähköpostin luomisessa,mikäli asiakas tilaa totteet--*/
 							$db_print = $row['name'] . ' ' . $row['category']  . ' ' . 'Maara:' . $_SESSION['qty'][$i];
 
 							/*-- Muuttuja tallennetaan taulukkoon, jonka alkioihin kerääntyy näitä merkkijonoja niin kauan kuin silmukassa ollaan --*/
 							$order_array[] = $db_print;
 
-							$message = implode("\r\n", $order_array);
-							echo 'Viesti on: ' . $message ;
+							$_SESSION['message'] = implode("\r\n", $order_array);
+							//echo 'Viesti on: ' . $message ; //the experiment print
 							$i++;
 						}
 					}
@@ -116,6 +117,7 @@
 			<?php
 			
 			/* Kysytään asiakkaalta tarvittavat tiedot */
+
 			?>
 			<div class="order-format">
 				<form autocomplete="on" action="order-handling.php" method="POST">
