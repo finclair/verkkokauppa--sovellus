@@ -1,5 +1,5 @@
-
 <?php
+
 function executeQuery($query) {
     global $dbh;
     $stmt = $dbh->prepare($query);
