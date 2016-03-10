@@ -20,8 +20,8 @@
 						'%' . $productName  . '%'
 					];
 
-					$products = executeQuery('SELECT id, name, price, category, saldo FROM product WHERE price < ? AND name LIKE ?', $queryParameters);
-
+					$products = executeQuery('SELECT * FROM product WHERE price < ? AND name LIKE ?', $queryParameters);
+					
 					foreach ($products as $product) {
 						require 'templates/product-preview.php';
 					}
@@ -31,7 +31,7 @@
 				else if (!empty($productPrice)) {
 					$queryParameters = [$productPrice];
 
-					$products = executeQuery('SELECT id, name, price, category, saldo FROM product WHERE price < ?', $queryParameters);
+					$products = executeQuery('SELECT * FROM product WHERE price < ?', $queryParameters);
 
 					foreach ($products as $product) {
 						require 'templates/product-preview.php';
@@ -42,7 +42,7 @@
 				else if (!empty($productName)) {
 					$queryParameters = ['%' . $productName . '%'];
 
-					$products = executeQuery('SELECT id, name, price, category, saldo FROM product WHERE name LIKE ?', $queryParameters);
+					$products = executeQuery('SELECT * FROM product WHERE name LIKE ?', $queryParameters);
 
 					foreach ($products as $product) {
 						require 'templates/product-preview.php';

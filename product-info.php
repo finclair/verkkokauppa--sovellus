@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html>
-
 	<?php require_once 'plugins/head.php'; ?>
 	<body>
 		<div class="wrap">
 			<?php require_once 'plugins/header.php'; ?>
 			<?php require_once 'plugins/db-connection.php'; ?>
-			
+			<?php require_once 'plugins/db-operations.php'; ?>
 			<?php
 			$productId = (int)$_GET['id'];
-			
-			$sql = $dbh->prepare("SELECT * FROM product WHERE id = :id");
-			$sql->bindParam(':id', $productId);
-			$ok = $sql->execute();
 
-			if(!$ok) { print_r ($sql->errorInfo() ) ;} 
+			$queryParameters = [$productId];
 
-			$product = $sql->fetch(PDO::FETCH_ASSOC);
-
+			$product = executeQuery('SELECT * FROM product WHERE id = ?', $queryParameters);
 			?>
 			<article>
 				<div class="article-content">
