@@ -2,6 +2,7 @@
 session_start();
 require_once 'plugins/Validate.php';
 require_once 'plugins/db-connection.php';
+require_once 'plugins/helpers.php';
 
 
 /* Kun lomake lähetetään käyttäjän painaessa 'Tilaa tuotteet!', seuraa joukko tarkistuksia */
@@ -14,11 +15,9 @@ if(isset($_POST['subscribe']) ) {
         /* --Kukin kenttä tarkistetaan --*/
         if (isset($_POST['firstname']) && !empty($_POST['firstname']) && isset($_POST['lastname']) && !empty($_POST['lastname']) && isset($_POST['address']) && !empty($_POST['address']) ) {
 
-
             /*-- Tarkistetaan vielä käyttäjän merkkijonot virheellisiksi koettujen merkkien varalta --*/
             /*-- nimikentissä ei numeroita sallita --*/
             $name_pattern='/^[a-ö\s]+$/i';
-            $address_pattern='/^[a-ö0-9\s]+$/i';
             if(preg_match($name_pattern, $_POST["firstname"]) && preg_match($name_pattern, $_POST["lastname"])) {
                 $name_check = 1;
                 /*--  Käytetään syötteisiin vielä strip_tags funktiota kaiken varalta --*/
@@ -30,7 +29,7 @@ if(isset($_POST['subscribe']) ) {
                 array_push($errors, 'Nimikenttä sisältää kiellettyjä merkkejä!');
             }
 
-            if(preg_match($address_pattern, $_POST["address"]) ) {
+            if (isAddress($_POST['address'])) {
                 $address_check = 1;
                 $_POST['address'] = strip_tags($_POST['address']);
             }
@@ -57,7 +56,6 @@ if(isset($_POST['subscribe']) ) {
                     $customer_email = $_POST['email'];
                     $store_mail = "uGamer@store.com";
 
-                    //TODO Create message variable use properly  --> DONE
                     //TODO Price Tag printed in the messsage
                     $message = $_POST['firstname'] . ' ' . $_POST['lastname'] . "\r\n" . $_POST['address']  . "\r\n\r\n" . $_SESSION['message'];
                     //$message = 'assddsaad';
